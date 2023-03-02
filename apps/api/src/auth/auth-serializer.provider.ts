@@ -15,7 +15,6 @@ export class AuthSerializer extends PassportSerializer {
 
   async deserializeUser(
     payload: { username: string },
-    // TODO
     done: (err: Error, user: Omit<User, "password">) => void
   ) {
     const user = await this.authService.findByUsername(payload.username);

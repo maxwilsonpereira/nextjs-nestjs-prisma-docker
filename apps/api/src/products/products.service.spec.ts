@@ -6,14 +6,12 @@ import { CreateProductDto } from "./dto/create-product.dto";
 import { ProductsService } from "./products.service";
 import { getChangeArray } from "./utils";
 
-// TODO create some sort of factory for these
 const product: CreateProductDto = {
   amountAvailable: 2,
   cost: 100,
   productName: "letter opener",
 };
 
-// TODO add to before each
 const user: User = {
   id: "1",
   username: "almir",

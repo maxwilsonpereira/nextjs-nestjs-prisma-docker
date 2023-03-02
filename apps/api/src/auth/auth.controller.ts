@@ -75,5 +75,3 @@ export class AuthController {
     }
   }
 }
-
-// TODO response types

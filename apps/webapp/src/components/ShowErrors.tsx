@@ -15,8 +15,6 @@ export const ShowErrors = ({ error }: { error: AxiosError }) => {
     <Stack sx={{ mt: 2, width: "100%" }} spacing={2}>
       {messages.map((message) => {
         let specialCase: React.ReactNode;
-        // TODO should have a connection with error codes with the backend
-        // TODO better error handling
         if (
           message.includes(
             "There is already an active session using your account"

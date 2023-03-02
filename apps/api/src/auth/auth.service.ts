@@ -49,7 +49,6 @@ export class AuthService {
     inputPassword: string,
     isLogout?: boolean
   ) {
-    // TODO: can be joined into one query
     const user = await this.prisma.user.findUnique({ where: { username } });
 
     if (!user) {

@@ -16,7 +16,6 @@ export class ProductsService {
     });
   }
 
-  // TODO pagination
   findAll() {
     return this.prisma.product.findMany({ take: 100 });
   }
