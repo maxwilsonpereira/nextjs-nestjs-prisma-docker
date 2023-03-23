@@ -1,3 +1,18 @@
+## START:
+
+Initialize Docker Desktop
+`docker compose -f ./packages/database/docker-compose.yml up -d`
+`npm install`
+`yarn dev` WILL RUN BE and FE
+apps\api\package.json: dev
+apps\webapp\package.json: dev
+
+## TROUBLESHOOTING:
+
+- API STUCK: File change detected. Starting incremental compilation...
+  -- Change typescript version on api "package.json" to: "typescript": "4.8.3"
+  -- npm install
+
 <p align="center">
 <img src="https://raw.githubusercontent.com/almirbi/pepsi-machine/main/apps/webapp/src/components/Deposit/50-purple.png" alt="rupee" width="200"/>
 </p>
