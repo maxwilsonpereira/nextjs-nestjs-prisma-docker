@@ -1,37 +1,42 @@
-import * as React from "react";
+import { Dispatch, SetStateAction, useState, useEffect } from "react";
 import { FormControl, Typography } from "@mui/material";
 import { Product } from "database";
 import { setWeekendsToFriday } from "@components";
 
 export const FieldScheduling = ({
+  product,
   setNewProduct,
 }: {
-  setNewProduct: React.Dispatch<
-    React.SetStateAction<Partial<Product> | undefined>
-  >;
+  product: Partial<Product> | undefined;
+  setNewProduct: Dispatch<SetStateAction<Partial<Product> | undefined>>;
 }) => {
-  const [selectedDate, setSelectedDate] = React.useState("");
-  const [userMessage, setUserMessage] = React.useState("");
+  const [selectedDate, setSelectedDate] = useState("");
+  const [userMessage, setUserMessage] = useState("");
+
+  useEffect(() => {
+    if (product && product.expireDate)
+      setSelectedDate(product.expireDate.substring(0, 10));
+  }, [product]);
+
   const inputDateHandler = (event) => {
     setUserMessage("");
-    console.log("event.target.value: ", event.target.value);
     const date = new Date(event.target.value);
     const dayOfWeek = date.getDay();
     if (dayOfWeek === 0 || dayOfWeek === 6) {
       const prevFriday = setWeekendsToFriday(date);
       setSelectedDate(prevFriday.toISOString().substring(0, 10));
-      setNewProduct((current) => ({
-        ...current,
-        expireDate: prevFriday,
+      setNewProduct((prev) => ({
+        ...prev,
+        expireDate: prevFriday.toString(),
       }));
       setUserMessage(
         "Weekends are not allowed. Picking closest Friday instead."
       );
     } else {
       setSelectedDate(event.target.value);
-      setNewProduct((current) => ({
-        ...current,
-        expireDate: date,
+      setNewProduct((prev) => ({
+        ...prev,
+        expireDate: date.toString(),
       }));
     }
   };

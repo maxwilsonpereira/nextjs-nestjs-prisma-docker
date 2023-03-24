@@ -14,11 +14,13 @@ import { UserContext, ProductDeleteBtn, ProductEditBtn } from "@components";
 
 export const ProductUnit = ({
   product,
-  onDelete,
+  setProducts,
+  refetchProducts,
   setError,
 }: {
   product: Product;
-  onDelete: () => {};
+  setProducts: (_data: Product[]) => void;
+  refetchProducts: () => {};
   setError: Dispatch<SetStateAction<AxiosError<unknown, any> | undefined>>;
 }) => {
   const { user } = useContext(UserContext);
@@ -83,14 +85,10 @@ export const ProductUnit = ({
 
           {user?.id === product.sellerId && (
             <>
-              <ProductEditBtn
-                productId={product.id}
-                onDelete={onDelete}
-                setError={setError}
-              />
+              <ProductEditBtn product={product} setProducts={setProducts} />
               <ProductDeleteBtn
                 productId={product.id}
-                onDelete={onDelete}
+                refetchProducts={refetchProducts}
                 setError={setError}
               />
             </>

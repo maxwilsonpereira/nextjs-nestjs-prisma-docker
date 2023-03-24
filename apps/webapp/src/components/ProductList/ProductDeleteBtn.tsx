@@ -6,11 +6,11 @@ import { apiClient } from "@api";
 
 export const ProductDeleteBtn = ({
   productId,
-  onDelete,
+  refetchProducts,
   setError,
 }: {
   productId: string;
-  onDelete: () => {};
+  refetchProducts: () => {};
   setError: Dispatch<SetStateAction<AxiosError<unknown, any> | undefined>>;
 }) => {
   return (
@@ -18,7 +18,7 @@ export const ProductDeleteBtn = ({
       onClick={async () => {
         try {
           await apiClient.delete(`/products/${productId}`);
-          onDelete();
+          refetchProducts();
         } catch (e) {
           setError(e as AxiosError);
         }

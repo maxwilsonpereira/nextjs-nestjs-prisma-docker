@@ -1,4 +1,4 @@
-import * as React from "react";
+import { useState, useEffect } from "react";
 import { AxiosError } from "axios";
 import {
   Dialog,
@@ -22,12 +22,18 @@ import {
 export const AddProductForm = ({
   onAdd,
   onClose,
+  product,
 }: {
   onAdd: () => {};
   onClose: () => void;
+  product?: Product;
 }) => {
-  const [newProduct, setNewProduct] = React.useState<Partial<Product>>();
-  const [error, setError] = React.useState<AxiosError>();
+  const [newProduct, setNewProduct] = useState<Partial<Product>>();
+  const [error, setError] = useState<AxiosError>();
+
+  useEffect(() => {
+    if (product) setNewProduct(product);
+  }, [product]);
 
   return (
     <Dialog
@@ -45,18 +51,25 @@ export const AddProductForm = ({
       >
         <CloseIcon />
       </IconButton>
-      <DialogTitle sx={{ p: 3, pt: 6 }}>Add Product</DialogTitle>
+      <DialogTitle sx={{ pt: 6 }}>
+        {product ? "Edit" : "Add"} Product
+      </DialogTitle>
       <DialogContent>
         <Stack gap={4}>
           <FieldCost newProduct={newProduct} setNewProduct={setNewProduct} />
           <FieldAmount newProduct={newProduct} setNewProduct={setNewProduct} />
-          <FieldProdName setNewProduct={setNewProduct} />
-          <FieldScheduling setNewProduct={setNewProduct} />
+          <FieldProdName
+            newProduct={newProduct}
+            setNewProduct={setNewProduct}
+          />
+          <FieldScheduling product={product} setNewProduct={setNewProduct} />
           <FieldImgUpload setNewProduct={setNewProduct} />
           <FormSubmitBtn
             setError={setError}
             onAdd={onAdd}
+            onClose={onClose}
             newProduct={newProduct}
+            editProduct={typeof product !== "undefined"}
           />
         </Stack>
         <ShowErrors error={error as AxiosError} />

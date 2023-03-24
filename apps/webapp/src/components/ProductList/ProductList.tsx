@@ -10,14 +10,14 @@ type Props = {
   products: Product[];
   setProducts: (_data: Product[]) => void;
   onBuy: (_buyResylt: BuyResult) => void;
-  onDelete: () => {};
+  refetchProducts: () => {};
 };
 
 export const ProductList = ({
   products,
   setProducts,
   onBuy,
-  onDelete,
+  refetchProducts,
 }: Props) => {
   const [error, setError] = useState<AxiosError>();
   const { user } = useContext(UserContext);
@@ -56,7 +56,8 @@ export const ProductList = ({
             <ListItem key={product.id} sx={{ p: 0.5 }}>
               <ProductUnit
                 product={product}
-                onDelete={onDelete}
+                setProducts={setProducts}
+                refetchProducts={refetchProducts}
                 setError={setError}
               />
               <ProductBuy

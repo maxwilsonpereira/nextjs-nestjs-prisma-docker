@@ -1,31 +1,39 @@
-import { Dispatch, SetStateAction } from "react";
+import { useState, Dispatch, SetStateAction } from "react";
 import { AxiosError } from "axios";
 import { IconButton } from "@mui/material";
 import EditOutlined from "@mui/icons-material/EditOutlined";
+import { Product } from "database";
 import { apiClient } from "@api";
+import { AddProductForm } from "@components";
 
 export const ProductEditBtn = ({
-  productId,
-  onDelete,
-  setError,
+  product,
+  setProducts,
 }: {
-  productId: string;
-  onDelete: () => {};
-  setError: Dispatch<SetStateAction<AxiosError<unknown, any> | undefined>>;
+  product: Product;
+  setProducts: (_data: Product[]) => void;
 }) => {
+  const [addProdFormModal, setAddProdFormModal] = useState<JSX.Element>();
+
   return (
-    <IconButton
-      onClick={async () => {
-        try {
-          await apiClient.delete(`/products/${productId}`);
-          onDelete();
-        } catch (e) {
-          setError(e as AxiosError);
+    <>
+      {addProdFormModal}
+      <IconButton
+        onClick={() =>
+          setAddProdFormModal(
+            <AddProductForm
+              onAdd={async () => {
+                setProducts((await apiClient.get("/products")).data);
+              }}
+              onClose={() => setAddProdFormModal(undefined)}
+              product={product}
+            />
+          )
         }
-      }}
-      sx={{ ml: 2, backgroundColor: "#fff" }}
-    >
-      <EditOutlined color="primary" />
-    </IconButton>
+        sx={{ ml: 2, backgroundColor: "#fff" }}
+      >
+        <EditOutlined color="primary" />
+      </IconButton>
+    </>
   );
 };

@@ -68,7 +68,7 @@ const Products = () => {
                 setProducts((await apiClient.get("/products")).data);
                 setUser?.((await apiClient.get("/auth/me")).data);
               }}
-              onDelete={async () => {
+              refetchProducts={async () => {
                 setProducts((await apiClient.get("/products")).data);
               }}
               products={products}

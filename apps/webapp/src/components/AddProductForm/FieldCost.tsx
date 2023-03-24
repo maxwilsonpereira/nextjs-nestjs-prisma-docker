@@ -15,6 +15,7 @@ export const FieldCost = ({
   return (
     <FormControl>
       <TextField
+        sx={{ mt: 2 }}
         label="cost"
         value={newProduct?.cost ? newProduct?.cost / 100 : undefined}
         onChange={(e) => {
