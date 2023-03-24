@@ -17,8 +17,8 @@ import { UsersModule } from "./users/users.module";
     ProductsModule,
     ThrottlerModule.forRootAsync({
       useFactory: () => ({
-        ttl: 10,
-        limit: 10,
+        ttl: 60, // one minute
+        limit: 60, // 60 requests per minute
       }),
     }),
   ],

@@ -14,6 +14,7 @@ export const FieldAmount = ({
   return (
     <FormControl>
       <TextField
+        fullWidth
         label="amount available"
         value={newProduct?.amountAvailable}
         onChange={(event) => {

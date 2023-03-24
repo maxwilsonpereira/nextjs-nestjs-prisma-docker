@@ -1,4 +1,11 @@
-import { Box, Dialog, DialogTitle, Grid, Typography } from "@mui/material";
+import {
+  Box,
+  Dialog,
+  DialogTitle,
+  Grid,
+  Button,
+  Typography,
+} from "@mui/material";
 import { Product } from "database";
 import Head from "next/head";
 import { useContext, useState } from "react";
@@ -17,7 +24,19 @@ const Products = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [showResult, setShowResult] = useState(false);
   const [buyResult, setBuyResult] = useState<BuyResult>();
+  const [addProdFormModal, setAddProdFormModal] = useState<JSX.Element>();
   const { user, setUser } = useContext(UserContext);
+
+  const showEditFormProdModal = () => {
+    setAddProdFormModal(
+      <AddProductForm
+        onAdd={async () => {
+          setProducts((await apiClient.get("/products")).data);
+        }}
+        onClose={() => setAddProdFormModal(undefined)}
+      />
+    );
+  };
 
   return (
     <>
@@ -29,15 +48,16 @@ const Products = () => {
       </Head>
       <Grid justifyContent="center" width="100%">
         {user?.role === ROLE.SELLER && (
-          <Grid item padding={0} md={4} justifyContent="center" sm={12}>
-            <Box display="flex" width="100%" justifyContent="center">
-              <AddProductForm
-                onAdd={async () => {
-                  setProducts((await apiClient.get("/products")).data);
-                }}
-              />
-            </Box>
-          </Grid>
+          <>
+            <Button
+              variant="outlined"
+              sx={{ ml: 4 }}
+              onClick={showEditFormProdModal}
+            >
+              Add Product
+            </Button>
+            {addProdFormModal}
+          </>
         )}
         <Grid item width="100%" md={8} sm={12}>
           <Box display="flex" width="100%" justifyContent="center">
@@ -47,6 +67,9 @@ const Products = () => {
                 setShowResult(true);
                 setProducts((await apiClient.get("/products")).data);
                 setUser?.((await apiClient.get("/auth/me")).data);
+              }}
+              onDelete={async () => {
+                setProducts((await apiClient.get("/products")).data);
               }}
               products={products}
               setProducts={setProducts}

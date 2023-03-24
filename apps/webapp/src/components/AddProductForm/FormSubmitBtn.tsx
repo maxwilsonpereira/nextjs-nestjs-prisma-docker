@@ -3,6 +3,7 @@ import { AxiosError } from "axios";
 import { Button } from "@mui/material";
 import { BuyResult } from "@types";
 import { apiClient } from "@api";
+import { Product } from "database";
 
 export const FormSubmitBtn = ({
   setError,

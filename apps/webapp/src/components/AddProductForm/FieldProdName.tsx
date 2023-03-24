@@ -1,7 +1,6 @@
 import * as React from "react";
 import { FormControl, TextField } from "@mui/material";
 import { Product } from "database";
-import { NumberFormatCustom } from "@components";
 
 export const FieldProdName = ({
   setNewProduct,
