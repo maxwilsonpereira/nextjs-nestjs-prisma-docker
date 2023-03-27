@@ -67,3 +67,7 @@ A PostgreSQL Docker image is a pre-built container image that contains the Postg
 PostgreSQL is a popular open-source relational database management system (RDBMS) that provides robust data storage and management capabilities. By using a PostgreSQL Docker image, developers and system administrators can easily create, deploy, and manage PostgreSQL instances within a containerized environment, without the need for complex setup or configuration.
 
 Docker images are typically hosted on Docker Hub, a public registry where users can find and download pre-built images for a wide variety of applications and services. To use a PostgreSQL Docker image, you would typically start by downloading the image from Docker Hub, and then launching a new container based on that image.
+
+#### Docker Volume
+
+A Docker volume is a way to store and manage data separately from a container. It provides a way to persist data beyond the life of a container and makes it easier to manage and share data across multiple containers. When you create a volume in Docker, it creates a directory on the host machine that is mounted to the container, allowing the container to read and write data to the volume just like it would to any other directory on its file system.
