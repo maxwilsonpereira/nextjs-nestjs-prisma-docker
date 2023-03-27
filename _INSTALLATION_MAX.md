@@ -1,4 +1,8 @@
-#### API Packages
+#### Installation
+
+- **Nx Workspace** for the backend structure
+
+##### API Packages
 
 - **NestJS** for the backend structure
 - **Passport.js** for auth
@@ -6,7 +10,7 @@
 - **Prisma** as ORM
 - **PostgreSQL** + **Docker** for local database
 
-#### Webapp Packages
+##### Webapp Packages
 
 - **Next JS** for the frontend structure
 - **Material UI** as a design system

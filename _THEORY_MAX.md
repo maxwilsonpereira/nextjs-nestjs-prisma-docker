@@ -59,3 +59,11 @@ Prisma offers features such as data validation, real-time data synchronization, 
 Prisma is an ORM (Object-Relational Mapping) tool. It generates SQL queries automatically based on data models defined in a schema file. It offers advantages such as improved performance, type-safety, and a more intuitive API.
 
 Migrations in Prisma manage changes to the database schema over time. A migration is a change script that modifies the schema to reflect a change in the data model. These migration files are fully customizable so that you can configure any additional features of the underlying database or include additional commands, e.g. for seeding. To generate a migration, run a command in the Prisma CLI. Applying a migration modifies the schema to match the updated Prisma schema file. Migrations allow for changes to the schema without losing data or requiring manual updates to the database.
+
+#### Docker Image (postgres)
+
+A PostgreSQL Docker image is a pre-built container image that contains the PostgreSQL database software and all of its dependencies. It is designed to run in a Docker container, which is a lightweight and portable virtualization technology that allows software to be packaged and deployed in a standardized way.
+
+PostgreSQL is a popular open-source relational database management system (RDBMS) that provides robust data storage and management capabilities. By using a PostgreSQL Docker image, developers and system administrators can easily create, deploy, and manage PostgreSQL instances within a containerized environment, without the need for complex setup or configuration.
+
+Docker images are typically hosted on Docker Hub, a public registry where users can find and download pre-built images for a wide variety of applications and services. To use a PostgreSQL Docker image, you would typically start by downloading the image from Docker Hub, and then launching a new container based on that image.

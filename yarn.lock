@@ -1756,7 +1756,7 @@
     "normalize-path" "^3.0.0"
     "picomatch" "^2.0.4"
 
-"api@file:C:\\Users\\maper\\Desktop\\nextjs-nestjs-prisma-docker\\apps\\api":
+"api@file:C:\\Users\\maper\\Desktop\\NestJSPrismaNextJsDocker\\apps\\api":
   "resolved" "file:apps/api"
   "version" "0.0.0"
   dependencies:
@@ -2477,7 +2477,7 @@
   "resolved" "https://registry.npmjs.org/damerau-levenshtein/-/damerau-levenshtein-1.0.8.tgz"
   "version" "1.0.8"
 
-"database@*", "database@file:C:\\Users\\maper\\Desktop\\nextjs-nestjs-prisma-docker\\packages\\database":
+"database@*", "database@file:C:\\Users\\maper\\Desktop\\NestJSPrismaNextJsDocker\\packages\\database":
   "resolved" "file:packages/database"
   "version" "0.0.0"
   dependencies:
@@ -2752,7 +2752,7 @@
   "resolved" "https://registry.npmjs.org/escape-string-regexp/-/escape-string-regexp-4.0.0.tgz"
   "version" "4.0.0"
 
-"eslint-config-custom@*", "eslint-config-custom@file:C:\\Users\\maper\\Desktop\\nextjs-nestjs-prisma-docker\\packages\\eslint-config-custom":
+"eslint-config-custom@*", "eslint-config-custom@file:C:\\Users\\maper\\Desktop\\NestJSPrismaNextJsDocker\\packages\\eslint-config-custom":
   "resolved" "file:packages/eslint-config-custom"
   "version" "0.0.0"
   dependencies:
@@ -6197,7 +6197,7 @@
   dependencies:
     "defaults" "^1.0.3"
 
-"webapp@file:C:\\Users\\maper\\Desktop\\nextjs-nestjs-prisma-docker\\apps\\webapp":
+"webapp@file:C:\\Users\\maper\\Desktop\\NestJSPrismaNextJsDocker\\apps\\webapp":
   "resolved" "file:apps/webapp"
   "version" "0.0.0"
   dependencies:
