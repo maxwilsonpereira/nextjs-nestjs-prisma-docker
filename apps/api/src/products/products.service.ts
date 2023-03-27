@@ -10,7 +10,17 @@ import { getChangeArray } from "./utils";
 export class ProductsService {
   constructor(private prisma: PrismaService) {}
 
+  private checkImageSize(image: string) {
+    if (image.length > 200000) {
+      throw new HttpException(
+        "Image size must be less than 200KB",
+        HttpStatus.BAD_REQUEST
+      );
+    }
+  }
+
   create(createProductDto: CreateProductDto, user: User) {
+    this.checkImageSize(createProductDto.productImage);
     return this.prisma.product.create({
       data: { ...createProductDto, sellerId: user.id },
     });
@@ -30,6 +40,8 @@ export class ProductsService {
     if (currentProduct.sellerId !== user.id) {
       throw new HttpException(`Not your PEPSI.`, HttpStatus.UNAUTHORIZED);
     }
+
+    this.checkImageSize(updateProductDto.productImage);
 
     return this.prisma.product.update({
       data: updateProductDto,

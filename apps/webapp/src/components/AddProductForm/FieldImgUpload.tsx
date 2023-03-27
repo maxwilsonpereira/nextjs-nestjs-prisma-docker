@@ -14,12 +14,18 @@ export const FieldImgUpload = ({
 }) => {
   const processImage = (event) => {
     const imageFile = event.target.files[0];
-    const imageUrl = URL.createObjectURL(imageFile);
-    if (imageUrl) {
-      setNewProduct((current) => ({
-        ...current,
-        productImage: imageUrl,
-      }));
+    if (imageFile && imageFile.type.startsWith("image/")) {
+      const reader = new FileReader();
+      reader.readAsDataURL(imageFile);
+      reader.onload = () => {
+        const imageUrl = reader.result;
+        if (imageUrl) {
+          setNewProduct((current) => ({
+            ...current,
+            productImage: imageUrl.toString(),
+          }));
+        }
+      };
     }
   };
 

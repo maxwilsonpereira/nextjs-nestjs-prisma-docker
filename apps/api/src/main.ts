@@ -3,6 +3,7 @@ import { NestFactory } from "@nestjs/core";
 import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
 import * as session from "express-session";
 import * as passport from "passport";
+import * as bodyParser from "body-parser";
 
 import { AppModule } from "./app.module";
 import { loginSecret } from "./auth/constants";
@@ -14,6 +15,8 @@ async function bootstrap() {
     origin: true,
     credentials: true,
   });
+
+  app.use(bodyParser.json({ limit: "1mb" }));
 
   app.use(
     session({

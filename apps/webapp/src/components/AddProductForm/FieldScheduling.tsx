@@ -14,8 +14,9 @@ export const FieldScheduling = ({
   const [userMessage, setUserMessage] = useState("");
 
   useEffect(() => {
-    if (product && product.expireDate)
-      setSelectedDate(product.expireDate.substring(0, 10));
+    if (product && product.expireDate) {
+      setSelectedDate(new Date(product.expireDate).toISOString().slice(0, 10));
+    }
   }, [product]);
 
   const inputDateHandler = (event) => {
